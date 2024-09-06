@@ -31,11 +31,22 @@ function displayIndianTime() {
     // Get the current date and time
     let currentDate = new Date();
 
-    // Convert to Indian Standard Time (IST) directly
-    let options = { timeZone: 'Asia/Kolkata', timeZoneName: 'short' };
-    let indianDate = currentDate.toLocaleString('en-IN', options);
+    // Convert to Indian Standard Time (IST) by adjusting the time zone offset
+    let options = { 
+        timeZone: 'Asia/Kolkata', 
+        year: 'numeric', 
+        month: '2-digit', 
+        day: '2-digit', 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit', 
+        hour12: true 
+    };
+    
+    // Format the date in IST
+    let indianDate = new Intl.DateTimeFormat('en-IN', options).format(currentDate);
 
-    // Display the Indian date and time in a readable format
+    // Display the Indian date and time
     document.getElementById("indianTime").innerHTML = "Indian Time: " + indianDate;
 }
 </script>
