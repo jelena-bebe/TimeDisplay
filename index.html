@@ -31,12 +31,12 @@ function displayIndianTime() {
     // Get the current date and time
     let currentDate = new Date();
 
-    // Convert to Indian Standard Time (IST) by adjusting the time zone offset
-    let indianTimeOffset = currentDate.getTimezoneOffset() + 330; // IST is UTC+5:30
-    let indianDate = new Date(currentDate.getTime() + indianTimeOffset * 60 * 1000);
+    // Convert to Indian Standard Time (IST) directly
+    let options = { timeZone: 'Asia/Kolkata', timeZoneName: 'short' };
+    let indianDate = currentDate.toLocaleString('en-IN', options);
 
     // Display the Indian date and time in a readable format
-    document.getElementById("indianTime").innerHTML = "Indian Time: " + indianDate.toLocaleString("en-IN", {timeZone: "Asia/Kolkata"});
+    document.getElementById("indianTime").innerHTML = "Indian Time: " + indianDate;
 }
 </script>
 
