@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Display Date and Time</h2>
+
+<!-- Button to display date and time in local time -->
+<button type="button" onclick="displayLocalTime()">
+Click me to display Date and Time in Local Time.
+</button>
+
+<!-- Button to display date and time in Indian Standard Time (IST) -->
+<button type="button" onclick="displayIndianTime()">
+Click me to display Date and Time in Indian Standard Time (IST).
+</button>
+
+<!-- Paragraphs to display the results -->
+<p id="localTime"></p>
+<p id="indianTime"></p>
+
+<script>
+function displayLocalTime() {
+    // Get the current date and time in local time
+    let currentDate = new Date();
+    
+    // Display the local date and time
+    document.getElementById("localTime").innerHTML = "Local Time: " + currentDate.toLocaleString();
+}
+
+function displayIndianTime() {
+    // Get the current date and time
+    let currentDate = new Date();
+
+    // Convert to Indian Standard Time (IST) by adjusting the time zone offset
+    let indianTimeOffset = currentDate.getTimezoneOffset() + 330; // IST is UTC+5:30
+    let indianDate = new Date(currentDate.getTime() + indianTimeOffset * 60 * 1000);
+
+    // Display the Indian date and time in a readable format
+    document.getElementById("indianTime").innerHTML = "Indian Time: " + indianDate.toLocaleString("en-IN", {timeZone: "Asia/Kolkata"});
+}
+</script>
+
+</body>
+</html>
